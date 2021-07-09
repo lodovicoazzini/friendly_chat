@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'views/ChatScreen.dart';
@@ -5,6 +6,17 @@ import 'views/ChatScreen.dart';
 void main() {
   runApp(MyApp());
 }
+
+final ThemeData kIOSTheme = ThemeData(
+  primarySwatch: Colors.blue,
+  primaryColor: Colors.grey[100],
+  primaryColorBrightness: Brightness.light,
+);
+
+final ThemeData kDefaultTheme = ThemeData(
+  primarySwatch: Colors.purple,
+  accentColor: Colors.purpleAccent[400],
+);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -24,6 +36,9 @@ class FriendlyChatApp extends StatelessWidget {
     return MaterialApp(
       title: 'Friendly Chat',
       home: ChatScreen(),
+      theme: defaultTargetPlatform == TargetPlatform.iOS
+          ? kIOSTheme
+          : kDefaultTheme,
     );
   }
 }
